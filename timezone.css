@@ -1,0 +1,153 @@
+:root{
+  --hex-size: 150px;
+  --hex-space: 5px;
+  --r: calc((var(--hex-size)*3*1.1547/2 + 4*var(--hex-space)) );
+  --animation-speed: 22s;
+}
+
+.timezone-section{
+  height: 100vh;
+  width: 100vw;
+}
+
+.timezone-section-background{
+  width: 120vw;
+  height: 100vh;
+  display:flex;
+}
+
+.hexagon{
+  width: var(--hex-size);
+  height: calc(var(--hex-size)*1.1547); 
+  margin: var(--hex-space);
+  display: inline-block;
+  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+  margin-bottom: calc(var(--hex-space) - var(--hex-size) * 0.4);
+  background-color: black;
+}
+
+.hex-container::before {
+  content: "";
+  width: calc(var(--hex-size)/2 + var(--hex-space));
+  float: left;
+  height: 100%;
+  shape-outside: repeating-linear-gradient(     
+                  transparent 0 calc(var(--r) - 3px),      
+                  #fff        0 var(--r));
+}
+
+.hex-container {
+  background: linear-gradient(238deg, #ff0000, #ffaa00, #ff00ff, #ffff00, #00ff00, #00aaaa, #0000ff, #5500ff, #ff00ff, #ffaaff, #ffffff, #ffaa00, #ff0000, #ff00ff, #0000ff, #00aaaa, #00ff00, #ffff00, #0000ff, #ffaa00, #ff0000);
+  background-size: 1200% 1200%;
+  -webkit-animation: rainbow var(--animation-speed) ease infinite;
+  animation: rainbow var(--animation-speed) ease infinite;
+  position: relative;
+  left: -100px;
+}
+
+@-webkit-keyframes rainbow {
+  0% { background-position: 0% 50% }
+  25% { background-position: 50% 50% }
+  50% { background-position: 100% 50% }
+  75% { background-position: 50% 100% }
+  100% { background-position: 0% 50% }
+}
+@keyframes rainbow {
+  0% { background-position: 0% 50% }
+  25% { background-position: 50% 50% }
+  50% { background-position: 100% 50% }
+  75% { background-position: 50% 100% }
+  100% { background-position: 0% 50% }
+}
+
+#diamond {
+  width: 0;
+  height: 0;
+  border: 10vw solid transparent;
+  border-bottom-color: red;
+  position: relative;
+  top: -200px;
+  margin: auto;
+}
+
+#diamond:after {
+  content: '';
+  position: absolute;
+  left: -10vw;
+  top: 10vw;
+  width: 0;
+  height: 0;
+  border: 10vw solid transparent;
+  border-top-color: red;
+}
+
+.add-timezone{
+  border-style: solid;
+  border-color: white;
+  border-radius: 20px;
+  border-width: 5px;
+  color: white;
+  position: absolute;
+  top: 85vh;
+  font-size: 100px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.add-timezone:hover{
+  cursor: pointer;
+}
+
+.time-zones{
+  position: absolute;
+  top: 20vh;
+  height: 60vh;
+  width: 90vw;
+  left: 50%;
+  transform: translate(-50%);
+  border: solid;
+  border-color: white;
+  border-radius: 20px;
+  border-width: 5px;
+  display: flex;
+  font-size: 15px;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+
+.time-zone-select{
+  position: absolute;
+  display: none;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%,-40%);
+}
+
+
+.time-zone-select > select{
+  font-size: 60px;
+  background-color: rgba(40, 0, 100, 0.85);
+}
+
+.time-zone-select > select > option{
+  font-size: 20px;
+}
+
+.timezone-select-main{
+  margin: none !important;
+  border-radius: 20px !important;
+  border-width: 7px !important;
+}
+
+.timezone-container{
+  font-size: clamp(20px,3vw,35px);
+  text-align: center;
+  margin: 10px;
+  height: 50%;
+  width: 250px;
+  border: solid;
+  border-color: white;
+  border-width: 3px;
+  border-radius: 20px;
+  min-width: 200px;
+}

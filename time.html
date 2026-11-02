@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="./time.css">
+        <link rel="stylesheet" href="./timer.css">
+        <link rel="stylesheet" href="./stopwatch.css">
+        <link rel="stylesheet" href="./timezone.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Website</title>
+    </head>
+    <body>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <div class="wrap">
+            <div id="wrap">
+                <div class="setting" id="setting">
+                    <div>
+                        <i class="fas fa-cog fa-xs settings-cog" id="settings-cog" style="color: #ffffff;"></i>
+                    </div> 
+                    <div class="setting-options" id="setting-options">
+                        <div class="time-zone-container">
+                            <div class="settings-label">Time Zone:</div>
+                            <select name="timezone_offset" id="timezone-offset" class="span5 timezone-select">
+                                <option value="0" selected="selected">Local Time</option>
+                                <option value="-12">(GMT -12:00) Eniwetok, Kwajalein</option>
+                                <option value="-11">(GMT -11:00) Midway Island, Samoa</option>
+                                <option value="-10">(GMT -10:00) Hawaii</option>
+                                <option value="-9.5">(GMT -09:30) Taiohae</option>
+                                <option value="-9">(GMT -09:00) Alaska</option>
+                                <option value="-8">(GMT -08:00) Pacific Time (US &amp; Canada)</option>
+                                <option value="-7">(GMT -07:00) Mountain Time (US &amp; Canada)</option>
+                                <option value="-6">(GMT -06:00) Central Time (US &amp; Canada), Mexico City</option>
+                                <option value="-5">(GMT -05:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+                                <option value="-4.5">(GMT -04:30) Caracas</option>
+                                <option value="-4">(GMT -04:00) Atlantic Time (Canada), Caracas, La Paz</option>
+                                <option value="-3.5">(GMT -03:30) Newfoundland</option>
+                                <option value="-3">(GMT -03:00) Brazil, Buenos Aires, Georgetown</option>
+                                <option value="-2">(GMT -02:00) Mid-Atlantic</option>
+                                <option value="-1">(GMT -01:00) Azores, Cape Verde Islands</option>
+                                <option value="0">(GMT +00:00) Western Europe Time, London, Lisbon, Casablanca</option>
+                                <option value="1">(GMT +01:00) Brussels, Copenhagen, Madrid, Paris</option>
+                                <option value="+2">(GMT +02:00) Kaliningrad, South Africa</option>
+                                <option value="+3">(GMT +03:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+                                <option value="+3.5">(GMT +03:30) Tehran</option>
+                                <option value="4">(GMT +04:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+                                <option value="4.5">(GMT +04:30) Kabul</option>
+                                <option value="5">(GMT +05:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+                                <option value="5.5">(GMT +05:30) Bombay, Calcutta, Madras, New Delhi</option>
+                                <option value="5.75">(GMT +05:45) Kathmandu, Pokhara</option>
+                                <option value="6">(GMT +06:00) Almaty, Dhaka, Colombo</option>
+                                <option value="+6.5">(GMT +06:30) Yangon, Mandalay</option>
+                                <option value="7">(GMT +07:00) Bangkok, Hanoi, Jakarta</option>
+                                <option value="8">(GMT +08:00) Beijing, Perth, Singapore, Hong Kong</option>
+                                <option value="8.75">(GMT +08:45) Eucla</option>
+                                <option value="9">(GMT +09:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+                                <option value="9.5">(GMT +09:30) Adelaide, Darwin</option>
+                                <option value="10">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+                                <option value="10.5">(GMT +10:30) Lord Howe Island</option>
+                                <option value="11">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+                                <option value="11.5">(GMT +11:30) Norfolk Island</option>
+                                <option value="12">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+                                <option value="12.75">(GMT +12:45) Chatham Islands</option>
+                                <option value="13">(GMT +13:00) Apia, Nukualofa</option>
+                                <option value="14">(GMT +14:00) Line Islands, Tokelau</option>
+                            </select>
+                        </div>
+                        <div>
+                            <div class="hr-container">
+                                <div class="settings-label">24 Hr:</div>
+                                <label class="switch">
+                                    <input type="checkbox" id="hr-input">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="date-container">
+                                <div class="settings-label">Long Date:</div>
+                                <label class="switch">
+                                    <input type="checkbox" id="date-input">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="live-time" id="live-time">Loading</div>
+                <section>
+                    <div class="live" id="live">
+                        <div class="live-date" id="live-date">Loading</div>
+                        <div id="stars"></div>
+                    </div>
+                </section>
+                    <div class="fader"></div>
+                <section>
+                    <div class="timer-section" id="timer">
+                        <div class="timer-grid">
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-up" id="hour-inc-10" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-up" id="hour-inc-1" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div></div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-up" id="min-inc-10" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-up" id="min-inc-1" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div></div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-up" id="sec-inc-10" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-up" id="sec-inc-1" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div class="timer double-grid" id="hour">00</div>
+                            <div class="timer">:</div>
+                            <div class="timer double-grid" id="min">00</div>
+                            <div class="timer">:</div>
+                            <div class="timer double-grid" id="sec">00</div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-down" id="hour-dec-10" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-down" id="hour-dec-1" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div></div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-down" id="min-dec-10" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-down" id="min-dec-1" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div></div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-down" id="sec-dec-10" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div class="timer-arrow"><i class="fa-solid fa-caret-down" id="sec-dec-1" style="color: #ffffff; cursor: pointer;"></i></div>
+                            <div class="double-grid"><div class="timer-reset-container"><i id="timer-reset" class="fa-solid fa-arrow-rotate-right fa-2xs timer-reset" style="color: #ffffff;"></i></div></div>
+                            <div class="timer-start double-grid" id="start">Start</div>
+                            <div class="double-grid"><div class="timer-volume-container">
+                                <i id="timer-volume-unmute" class="fa-solid fa-volume-high fa-2xs timer-volume-unmute" style="color: #ffffff;"></i>
+                                <i id="timer-volume-mute" class="fa-solid fa-volume-xmark fa-2xs timer-volume-mute hide" style="color: #ffffff;"></i>
+                            </div></div>
+                        </div>
+                    </div>
+                </section>
+                <div class="fader-2"></div>
+                <section>
+                    <div class="stopwatch-section" id="stopwatch">
+                        <div id="stopwatch-time" class="stopwatch-time">00:00:00.00</div>
+                        <div class="stopwatch-buttons">
+                            <i id="stopwatch-reset" class="fa-solid fa-arrow-rotate-right fa-2xs stopwatch-reset" style="color: #ffffff;"></i>
+                            <div id="stopwatch-start" class="stopwatch-start">Start</div>
+                            <div id="stopwatch-lap" class="stopwatch-lap">Lap</div>
+                        </div>
+                        <div class="stopwatch-laps-container">
+                            <div id="stopwatch-laps" class="stopwatch-laps"></div>
+                        </div>
+                        <div id="background-falling"></div>
+                        <div id="background-blue"></div>
+                    </div>
+
+                </section>
+                <div class="fader-3"></div>
+                <section>
+                    <div class="timezone-section" id="timezone-section">
+                        <div class="timezone-section-background" id="timezone-section-background">
+                            <div class="hex-container" id="hex-container">
+                            </div>
+                        </div>
+                        <div class="time-zones" id="time-zones">
+                        </div>
+                        <div class="time-zone-select" id="time-zone-select">
+                            <select name="timezone-offset-main" id="timezone-offset-main" class="span5 timezone-select timezone-select-main">
+                                <option value="">Please Select A Time Zone</option>
+                                <option value="-12">(GMT -12:00) Eniwetok, Kwajalein</option>
+                                <option value="-11">(GMT -11:00) Midway Island, Samoa</option>
+                                <option value="-10">(GMT -10:00) Hawaii</option>
+                                <option value="-9.5">(GMT -09:30) Taiohae</option>
+                                <option value="-9">(GMT -09:00) Alaska</option>
+                                <option value="-8">(GMT -08:00) Pacific Time (US &amp; Canada)</option>
+                                <option value="-7">(GMT -07:00) Mountain Time (US &amp; Canada)</option>
+                                <option value="-6">(GMT -06:00) Central Time (US &amp; Canada), Mexico City</option>
+                                <option value="-5">(GMT -05:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+                                <option value="-4.5">(GMT -04:30) Caracas</option>
+                                <option value="-4">(GMT -04:00) Atlantic Time (Canada), Caracas, La Paz</option>
+                                <option value="-3.5">(GMT -03:30) Newfoundland</option>
+                                <option value="-3">(GMT -03:00) Brazil, Buenos Aires, Georgetown</option>
+                                <option value="-2">(GMT -02:00) Mid-Atlantic</option>
+                                <option value="-1">(GMT -01:00) Azores, Cape Verde Islands</option>
+                                <option value="0">(GMT +00:00) Western Europe Time, London, Lisbon, Casablanca</option>
+                                <option value="1">(GMT +01:00) Brussels, Copenhagen, Madrid, Paris</option>
+                                <option value="2">(GMT +02:00) Kaliningrad, South Africa</option>
+                                <option value="3">(GMT +03:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+                                <option value="3.5">(GMT +03:30) Tehran</option>
+                                <option value="4">(GMT +04:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+                                <option value="4.5">(GMT +04:30) Kabul</option>
+                                <option value="5">(GMT +05:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+                                <option value="5.5">(GMT +05:30) Bombay, Calcutta, Madras, New Delhi</option>
+                                <option value="5.75">(GMT +05:45) Kathmandu, Pokhara</option>
+                                <option value="6">(GMT +06:00) Almaty, Dhaka, Colombo</option>
+                                <option value="6.5">(GMT +06:30) Yangon, Mandalay</option>
+                                <option value="7">(GMT +07:00) Bangkok, Hanoi, Jakarta</option>
+                                <option value="8">(GMT +08:00) Beijing, Perth, Singapore, Hong Kong</option>
+                                <option value="8.75">(GMT +08:45) Eucla</option>
+                                <option value="9">(GMT +09:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+                                <option value="9.5">(GMT +09:30) Adelaide, Darwin</option>
+                                <option value="10">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+                                <option value="10.5">(GMT +10:30) Lord Howe Island</option>
+                                <option value="11">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+                                <option value="11.5">(GMT +11:30) Norfolk Island</option>
+                                <option value="12">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+                                <option value="12.75">(GMT +12:45) Chatham Islands</option>
+                                <option value="13">(GMT +13:00) Apia, Nukualofa</option>
+                                <option value="14">(GMT +14:00) Line Islands, Tokelau</option>
+                            </select>
+                        </div>
+                        <div class="add-timezone" id="add-timezone">Add TimeZone</div>
+                    </div>
+                    <div class="main">
+                        <div class="container">
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                        </div>
+                      </div>
+                </section>
+            </div>
+        </div>  
+
+
+        <script src="./scroll.js"></script>
+        <script src="./time.js"></script>
+        <script src="./timezone.js"></script>
+    </body>
+</html>

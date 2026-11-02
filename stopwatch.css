@@ -1,0 +1,128 @@
+:root{
+    --stopwatch-time-min: 65px;
+    --stopwatch-time-max: 8vw;
+    --stopwatch-button-min: 40px;
+    --stopwatch-button-max: 100vw;
+    --stopwatch-start-min: 50px;
+    --stopwatch-start-max: 5vw;
+    --stopwatch-lap-min: 50px;
+    --stopwatch-lap-max: 5vw;
+    --stopwatch-laps-min: 25px;
+    --stopwatch-laps-max: 2vw;
+    --stopwatch-arrow-min: 50px;
+    --stopwatch-arrow-max: 7vw;
+}
+
+.stopwatch-section{
+    background-image: radial-gradient(black, rgba(0,0,20,1));
+    height: 100%;
+    background-size: 100vw 100vh;
+}
+
+.stopwatch-time{
+    font-size: clamp(var(--stopwatch-time-min),var(--stopwatch-time-max),var(--stopwatch-time-max));
+    text-align: center;
+    top:15vh;
+    z-index: 4;
+    position: relative;
+    color: white;
+    width: 100vw;
+}
+
+.stopwatch-buttons{
+    top:30vh;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 4;
+}
+
+.stopwatch-start{
+    text-align: center;
+    border: rgb(255, 255, 255);
+    border-width: 5px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    border-style: solid;
+    font-size: clamp(var(--stopwatch-start-min),var(--stopwatch-start-max),var(--stopwatch-start-max));
+    margin-right: 2vw;
+    margin-left: 2vw;
+    width: clamp(125px,15vw,15vw);
+    z-index: 4;
+}
+
+.stopwatch-lap{
+    position: relative;
+    text-align: center;
+    color: white;
+    z-index: 4;
+    border-width: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    border-style: solid;
+    width: fit-content;
+    font-size: clamp(var(--stopwatch-lap-min),var(--stopwatch-lap-max),var(--stopwatch-lap-max));
+}
+
+.stopwatch-laps{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 4;
+    overflow: auto;
+    align-content: flex-start;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: inherit;
+    width: inherit;
+
+}
+
+.stopwatch-laps-container{
+    border-width: 5px;
+    border-radius: 20px;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    top: 30vh;
+    margin-left: clamp(40px,5vw,5vw);
+    margin-right: clamp(40px,5vw,5vw);
+    height: 45vh;
+    z-index: 4;
+    overflow: auto;
+    align-content: flex-start;
+}
+
+.stopwatch-laps > * {
+    width: fit-content;
+    font-size: clamp(var(--stopwatch-laps-min),var(--stopwatch-laps-max),var(--stopwatch-laps-max));
+    margin-right: 30px;
+    z-index: 4;
+}
+
+.stopwatch-reset{
+    cursor: pointer;
+    align-self: center;
+    z-index: 4;
+}
+
+::-webkit-scrollbar {
+    height: 15px;
+    margin-bottom: 5px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 10px;
+}
